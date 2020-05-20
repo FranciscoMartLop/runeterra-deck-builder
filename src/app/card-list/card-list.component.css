@@ -1,0 +1,38 @@
+.cardlist-main-container {
+  margin: 3% 0% 0% 3%;
+  display: grid;
+  grid-template-areas:
+    "card-title"
+    "cardlist-container";
+  grid-gap: 1%;
+}
+
+.cardlist-title {
+  grid-area: card-title;
+  color: white;
+}
+
+.cardlist-cardimage {
+    grid-area: cardlist-container;
+    display: grid;
+    grid-template-areas: 'card-image';
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    max-height: 87vh;
+    overflow: auto;
+}
+
+.cardimage {
+  grid-area: card-image;
+  width: 100%;
+  max-width: 175px;
+  cursor: pointer;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #9450de;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+}

@@ -1,1 +1,7 @@
+<div class="home-main-container">
+    <div class="home-grid-container">
+        <app-card-list (cardClicked)="addCardHandler($event)"></app-card-list>
+        <app-builder [card]="card" [quantity]="quantity"></app-builder>
+    </div>
+</div>
 <router-outlet></router-outlet>

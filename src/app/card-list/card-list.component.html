@@ -1,3 +1,12 @@
-<p>
-  card-list works!
-</p>
+<div class="cardlist-main-container">
+  <div>
+    <h1 class="cardlist-title">
+      Creador de mazos
+    </h1>
+  </div>
+  <div class="cardlist-cardimage">
+    <div *ngFor="let card of cards; index as i; first as isFirst">
+      <img class="cardimage" (click)="addCard(card)" src="{{card.assets[0].gameAbsolutePath}}">
+    </div>
+  </div>
+</div>

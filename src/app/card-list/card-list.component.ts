@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
+import { CardsService } from '../cards.service';
 
 @Component({
   selector: 'app-card-list',
@@ -7,9 +8,26 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CardListComponent implements OnInit {
 
-  constructor() { }
+  cards: any[] = [];
+
+  @Output() cardClicked: EventEmitter<any> = new EventEmitter<any>();
+
+  constructor(private cardsService: CardsService) { }
 
   ngOnInit() {
+    this.getCards();
+  }
+
+  getCards() {
+    this.cardsService.getCards().then((cards: any) => {
+      cards.map((card) => {
+        this.cards.push(card);
+      })
+    });
+  }
+
+  addCard(card) {
+    this.cardClicked.emit(card);
   }
 
 }

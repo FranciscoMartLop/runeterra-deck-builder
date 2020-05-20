@@ -1,0 +1,17 @@
+.home-main-container {
+  background-color: rgb(23, 16, 56)
+}
+
+.home-grid-container {
+  display: grid;
+  height: 100vh;
+  grid-template-areas: "card-list deck-creator";
+  grid-gap: 0;
+  grid-template-columns: minmax(80%, 20%);
+}
+
+app-card-list {
+  grid-area: card-list;
+  background-image: url(http://dd.b.pvp.net/1_0_0/set1/en_us/img/cards/01SI039-full.png);
+  background-size: cover;
+}

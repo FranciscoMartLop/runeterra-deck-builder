@@ -6,19 +6,19 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 })
 export class CardsService {
 
-  private apiUrl = 'http://apis.manelme.com/data'
+  private apiData = 'http://apis.manelme.com/data';
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
   constructor(private http: HttpClient) { }
 
-  getCards() {
-    const url = `${this.apiUrl}/cards`;
-    return this.http.get(url);
+  async getCards() {
+    const url = `${this.apiData}/cards`;
+    return await this.http.get(url).toPromise();
   }
 
   getRegions() {
-    const url = `${this.apiUrl}/regions`;
+    const url = `${this.apiData}/regions`;
     return this.http.get(url);
   }
 

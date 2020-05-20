@@ -5,16 +5,20 @@ import { HttpClientModule } from '@angular/common/http';
 import { CardsService } from '../cards.service';
 import { CardListComponent } from '../card-list/card-list.component';
 import { HomeRoutingModule } from './home-routing.module';
+import { BuilderComponent } from '../builder/builder.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   imports: [
     CommonModule,
     HomeRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   declarations: [
     HomeComponent,
-    CardListComponent
+    CardListComponent,
+    BuilderComponent
   ],
   providers: [
     CardsService
