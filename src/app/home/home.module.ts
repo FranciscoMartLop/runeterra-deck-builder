@@ -7,6 +7,7 @@ import { CardListComponent } from '../card-list/card-list.component';
 import { HomeRoutingModule } from './home-routing.module';
 import { BuilderComponent } from '../builder/builder.component';
 import { FormsModule } from '@angular/forms';
+import { FilterComponent } from '../filter/filter.component';
 
 @NgModule({
   imports: [
@@ -18,7 +19,8 @@ import { FormsModule } from '@angular/forms';
   declarations: [
     HomeComponent,
     CardListComponent,
-    BuilderComponent
+    BuilderComponent,
+    FilterComponent
   ],
   providers: [
     CardsService

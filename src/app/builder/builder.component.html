@@ -6,7 +6,7 @@
     </div>
     <div class="deck-stats-container">
         <div class="champions">
-            <p><span>{{champions}}</span><span style="color:#a5a0bb">/6</span></p>
+            <p><span class="champions-stat">{{champions}}</span><span style="color:#a5a0bb">/6</span></p>
             <svg height="24" width="24" viewBox="0 0 24 24">
                 <path
                     d="M17.59 7.154L20.186 2s.875 1.303 1.24 3.37l.04.242-1.28 1.74H21.6c0 .35-.038.702-.085 1.053l-.05.35-1.954 2.61h1.28a18.205 18.205 0 01-2.425 4.147l.066-.089-.004.265c-.182 4.989-4.726 6.262-4.908 6.31l-.005.002.606-3.946h1.348v-3.345l1.347-1.338V9.358l-3.705 2.675v3.479h-2.022v-3.479L7.384 9.358v4.013L8.73 14.71v3.345h1.415L10.82 22s-4.857-1.222-5.048-6.312l-.004-.196-.001.02c-1.05-1.288-1.817-2.576-2.3-3.812l-.126-.335H4.69l-2.022-2.61C2.6 8.222 2.6 7.82 2.6 7.352h1.482L2.735 5.612C3.072 3.405 4.015 2 4.015 2l2.594 5.154a6.33 6.33 0 015.258-3.143l.233-.004.233.004a6.33 6.33 0 015.258 3.143L20.185 2z"
@@ -30,25 +30,30 @@
             </svg>
         </div>
         <div class="cards">
-            <p>{{cards}}<span style="color:#a5a0bb">/40</span></p>
+            <p><span class="cards-stat">{{cards}}</span><span style="color:#a5a0bb">/40</span></p>
             <div class="count-type-infostyles__LabelContainer-sc-184piky-4 kUNOKA">
                 <p class="text__Text14x400-l0hs2y-12 ejkxuJ" style="color:#a5a0bb">total</p>
             </div>
         </div>
     </div>
     <div class="deck-container">
-        <div *ngIf="cardList.length == 0">
-            <p>Haz click en una carda para añadir una carta a tu deck o pega un deck code</p>
+        <div style="text-align: center;" *ngIf="cardList.length == 0">
+            {{changeJustifyCenter()}}
+            <p>Haz click en una carta para añadirla a tu deck o introduce un deck code</p>
             <form #deckCode="ngForm" novalidate>
                 <input name="deckCode" class="deck-code" placeholder="Introduce el código aquí..." type="text" required
                     ngModel>
             </form>
         </div>
         <div *ngIf="cardList.length > 0">
+            {{changeJustifyStart()}}
             <div *ngFor="let card of cardList; index as i; first as isFirst">
-                <div class="cardDeck" (click)="removeCard(i)"
-                    style="background-image:url({{card.assets[0].fullAbsolutePath}})">
-                    <span>{{card.cost}}</span><span> {{card.name}} </span><span> {{card.quantity}} </span>
+                <div class="cardDeck" (click)="removeCard(i, card)">
+                    <div id={{i}} class="deckstats">
+                        {{regionCard(card.regionRef, i, card.assets[0].fullAbsolutePath)}}
+                        <span class="card-cost">{{card.cost}}</span><span class="card-name"> {{card.name}} </span><span
+                            class="card-quantity"> x{{card.quantity}} </span>
+                    </div>
                 </div>
             </div>
         </div>

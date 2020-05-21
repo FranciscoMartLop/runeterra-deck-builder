@@ -17,9 +17,9 @@ export class CardsService {
     return await this.http.get(url).toPromise();
   }
 
-  getRegions() {
+  async getRegions() {
     const url = `${this.apiData}/regions`;
-    return this.http.get(url);
+    return await this.http.get(url).toPromise();
   }
 
 }
