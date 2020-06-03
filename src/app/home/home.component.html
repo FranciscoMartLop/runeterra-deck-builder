@@ -1,7 +1,11 @@
 <div class="home-main-container">
     <div class="home-grid-container">
-        <app-card-list (cardClicked)="addCardHandler($event)"></app-card-list>
+        <app-card-list [filter]="filter" [activateRegions]="activeRegions" [activateManaCost]="activateManaCost"
+            [activateType]="activateType" [activateRarity]="activateRarity" (cardClicked)="addCardHandler($event)"
+            (toggleFilterEvent)="toggleFilterHandler($event)"></app-card-list>
         <app-builder [card]="card" [quantity]="quantity"></app-builder>
+        <app-filter (regionEmitter)="regionsHandler($event)" (manaCostEmitter)="manaCostHandler($event)"
+            (typeEmitter)="typeHandler($event)" (rarityEmitter)="rarityHandler($event)"></app-filter>
     </div>
 </div>
 <router-outlet></router-outlet>

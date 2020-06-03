@@ -15,3 +15,13 @@ app-card-list {
   background-image: url(http://dd.b.pvp.net/1_0_0/set1/en_us/img/cards/01SI039-full.png);
   background-size: cover;
 }
+
+app-filter {
+  grid-area: filter;
+  display: none;
+}
+
+app-builder {
+  grid-area: deck-creator;
+  /* display: none; */
+}

@@ -55,7 +55,7 @@
   width: 100%;
   padding-top: 5px;
   padding-bottom: 5px;
-  font-size: 1rem;
+  font-size: 1.5rem;
 }
 
 .deck-name:focus {
@@ -75,7 +75,7 @@
 .deck-code {
   border-radius: 5px;
   border: none;
-  width: 100%;
+  width: 80%;
   padding-top: 10px;
   padding-bottom: 10px;
   font-size: 0.9rem;

@@ -1,7 +1,7 @@
 <div class="builder-container">
     <div class="deck-name-container">
         <form #name="ngForm" novalidate>
-            <input name="deckName" class="deck-name" placeholder="#New Deck" type="text" required ngModel>
+            <input #deckname name="deckName" class="deck-name" placeholder="#New Deck" type="text" required ngModel>
         </form>
     </div>
     <div class="deck-stats-container">
@@ -39,10 +39,10 @@
     <div class="deck-container">
         <div style="text-align: center;" *ngIf="cardList.length == 0">
             {{changeJustifyCenter()}}
-            <p>Haz click en una carta para añadirla a tu deck o introduce un deck code</p>
-            <form #deckCode="ngForm" novalidate>
-                <input name="deckCode" class="deck-code" placeholder="Introduce el código aquí..." type="text" required
-                    ngModel>
+            <p>Haz click en una carta para añadirla a tu deck o introduce un deck code y pulsa enter</p>
+            <form #deckCodeForm="ngForm" novalidate>
+                <input #deckCode name="deckCode" class="deck-code" placeholder="Introduce el código aquí..." type="text" required
+                    ngModel (keydown)="decodeDeck(deckCode.value)">
             </form>
         </div>
         <div *ngIf="cardList.length > 0">
@@ -59,7 +59,7 @@
         </div>
     </div>
     <div class="save-container">
-        <form #name="ngForm" (ngSubmit)="saveDeck(name)" novalidate>
+        <form #name="ngForm" (ngSubmit)="saveDeck(deckname.value)" novalidate>
             <button class="save-button">Guardar deck</button>
         </form>
     </div>

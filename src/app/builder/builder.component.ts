@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { DeckEncoder } from 'runeterra';
 import { CardsService } from '../cards.service';
 
 @Component({
@@ -21,26 +22,48 @@ export class BuilderComponent implements OnInit {
   constructor(private cardService: CardsService) { }
 
   ngOnInit(): void {
-    /* Como obtener las regiones */
-    /* this.cardService.getRegions().then( (regions: any) => {
-      regions._embedded.regions.map((region) => {
-        
-      })
-    }); */
+
   }
 
   ngOnChanges() {
     if (this.card !== undefined) {
-      if (this.cardList.includes(this.card))
-        this.addExistingCard();
-      else
-        this.addNewCard();
+      this.checkCardExists(this.card);
       this.checkStats();
     }
   }
 
-  saveDeck(f: NgForm) {
-    console.log(f.value);
+
+
+  saveDeck(deckName) {
+    var deck = {
+      deckName: deckName,
+      riotCode: deckName,
+      cards: []
+    };
+    this.cardList.map((card) => {
+      deck.cards.push({
+        cardId: card.cardCode,
+        quantity: card.quantity
+      });
+
+    });
+    if (this.cards == 40) {
+      try {
+        this.cardService.createDeck(deck);
+        alert("Deck creado correctamente");
+      } catch (error) {
+        
+      }
+    } else 
+      alert("El deck debe de contener 40 cartas");
+    
+  }
+
+  checkCardExists(card) {
+    if (this.cardList.includes(card))
+      this.addExistingCard(card);
+    else
+      this.addNewCard(card);
   }
 
   removeCard(i, cardToRemove) {
@@ -61,17 +84,17 @@ export class BuilderComponent implements OnInit {
     this.checkStats();
   }
 
-  addNewCard() {
-    this.card.quantity = 1;
-    this.cardList.push(this.card);
-    this.checkAddedCardType(this.card.type, this.card.supertype);
+  addNewCard(cardToAdd) {
+    cardToAdd.quantity = 1;
+    this.cardList.push(cardToAdd);
+    this.checkAddedCardType(cardToAdd.type, cardToAdd.supertype);
   }
 
-  addExistingCard() {
+  addExistingCard(cardToAdd) {
     this.cardList.map((card) => {
-      if (card === this.card && card.quantity < 3) {
+      if (card === cardToAdd && card.quantity < 3) {
         card.quantity = card.quantity + 1;
-        this.checkAddedCardType(this.card.type, this.card.supertype);
+        this.checkAddedCardType(cardToAdd.type, cardToAdd.supertype);
       }
     })
   }
@@ -150,6 +173,28 @@ export class BuilderComponent implements OnInit {
       cards.style.color = "rgb(224, 18, 115)";
     else
       cards.style.color = "white";
+  }
+
+  decodeDeck(deckCode) {
+    try {
+      var deck = DeckEncoder.decode(deckCode);
+      this.decodingDeck(deck);
+    } catch (error) {
+
+    }
+  }
+
+  decodingDeck(deck) {
+    this.cardService.getCards().then((cards: any) => {
+      cards.map((card) => {
+        deck.map((cardToCompare) => {
+          if (cardToCompare.code == card.cardCode) {
+            for (var i = cardToCompare.count; i > 0; i--)
+              this.checkCardExists(card);
+          }
+        })
+      })
+    });
   }
 
 }

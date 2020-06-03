@@ -1,1 +1,226 @@
-<p>filter works!</p>
+<div class="filter-container">
+    <div class="title-container">
+        <p class="title">Filtros</p>
+    </div>
+    <div class="regions-container">
+        <div class="regions-title">
+            <p class="header-container">REGIONS</p>
+            <div class="delimitador"></div>
+        </div>
+        <div class="regions-body">
+            <div class="region" *ngFor="let region of regions; index as i; first as isFirst"
+                (click)="toggleRegion(region)">
+                <img id={{region.abbreviation}} class="region-icon" src={{region.iconAbsolutePath}}>
+                <span id={{region.abbreviation}} class="region-name">{{region.name}}</span>
+            </div>
+        </div>
+    </div>
+    <div class="mana-cost-container">
+        <div class="mana-cost-title">
+            <p class="header-container">MANA COST</p>
+            <div class="delimitador"></div>
+        </div>
+        <div class="mana-cost-body">
+            <div id="1" class="mana-cost" (click)="toggleManaCost(1)">
+                <span class="ball">1</span>
+            </div>
+            <div id="2" class="mana-cost" (click)="toggleManaCost(2)">
+                <span class="ball">2</span>
+            </div>
+            <div id="3" class="mana-cost" (click)="toggleManaCost(3)">
+                <span class="ball">3</span>
+            </div>
+            <div id="4" class="mana-cost" (click)="toggleManaCost(4)">
+                <span class="ball">4</span>
+            </div>
+            <div id="5" class="mana-cost" (click)="toggleManaCost(5)">
+                <span class="ball">5</span>
+            </div>
+            <div id="6" class="mana-cost" (click)="toggleManaCost(6)">
+                <span class="ball">6</span>
+            </div>
+            <div id="7" class="mana-cost" (click)="toggleManaCost(7)">
+                <span class="ball">7+</span>
+            </div>
+        </div>
+    </div>
+    <div class="types-container">
+        <div class="types-title">
+            <p class="header-container">TYPES</p>
+            <div class="delimitador"></div>
+        </div>
+        <div class="types-body">
+            <div class="type" (click)="toggleType('Champion')">
+                <svg id="Champion" height="24" width="24" viewBox="0 0 24 24" style="opacity: 0.3">
+                    <path
+                        d="M17.59 7.154L20.186 2s.875 1.303 1.24 3.37l.04.242-1.28 1.74H21.6c0 .35-.038.702-.085 1.053l-.05.35-1.954 2.61h1.28a18.205 18.205 0 01-2.425 4.147l.066-.089-.004.265c-.182 4.989-4.726 6.262-4.908 6.31l-.005.002.606-3.946h1.348v-3.345l1.347-1.338V9.358l-3.705 2.675v3.479h-2.022v-3.479L7.384 9.358v4.013L8.73 14.71v3.345h1.415L10.82 22s-4.857-1.222-5.048-6.312l-.004-.196-.001.02c-1.05-1.288-1.817-2.576-2.3-3.812l-.126-.335H4.69l-2.022-2.61C2.6 8.222 2.6 7.82 2.6 7.352h1.482L2.735 5.612C3.072 3.405 4.015 2 4.015 2l2.594 5.154a6.33 6.33 0 015.258-3.143l.233-.004.233.004a6.33 6.33 0 015.258 3.143L20.185 2z"
+                        fill="#a5a0bb" fill-rule="nonzero"></path>
+                </svg>
+                <span id="Champion" class="type-text">Campeón</span>
+            </div>
+            <div class="type" (click)="toggleType('Unit')">
+                <svg id="Unit" height="24" width="24" viewBox="0 0 24 24" style="opacity: 0.3">
+                    <path
+                        d="M19.218 3.429L12.167 2 5.115 3.429S6.878 10.07 3 17.07L10.051 22l.635-10s-4.02 2.286-3.455-4.286l4.936-1.428 4.936 1.428c.564 6.5-3.456 4.286-3.456 4.286l.635 10 7.051-4.929c-3.807-7-2.115-13.642-2.115-13.642z"
+                        fill="#a5a0bb" fill-rule="nonzero"></path>
+                </svg>
+                <span id="Unit" class="type-text">Seguidor</span>
+            </div>
+            <div class="type" (click)="toggleType('Spell')">
+                <svg id="Spell" height="24" width="24" viewBox="0 0 24 24" style="opacity: 0.3">
+                    <path
+                        d="M4.52 15.714s-.637-4.072 5.171-9.071c.284.357.638.714.992.928.991-.571 1.629-1.643 1.629-2.785 0-1.215-.638-2.215-1.63-2.786 2.126 0 5.596 3.143 5.596 8.142v.643c-.495-.357-1.204-.571-1.841-.571-1.558 0-2.975.857-3.683 2.143.779 1.285 2.125 2.142 3.683 2.142 1.558 0 3.116-1.071 3.754-2.5a5.85 5.85 0 011.204 2.5s.992 4.429-3.117 6.5c-4.108 2.071-8.074.286-8.074.286s3.895.071 4.958-3c0-.072-4.746.643-8.641-2.571z"
+                        fill="#a5a0bb" fill-rule="nonzero"></path>
+                </svg>
+                <span id="Spell" class="type-text">Hechizo</span>
+            </div>
+        </div>
+    </div>
+    <div class="rarity-container">
+        <div class="rarity-title">
+            <p class="header-container">RARITY</p>
+            <div class="delimitador"></div>
+        </div>
+        <div class="rarity-body">
+            <div class="rarity" (click)="toggleRarity('Champion')">
+                <svg id="ChampionRarity" style="opacity: 0.3" height="24" width="24" viewBox="0 0 24 24"
+                    class="card-rarity-selector-itemcomponent__RarityImageStyled-sc-1mh81j-2 hlIpcN">
+                    <defs>
+                        <radialGradient cx="50.0892308%" cy="49.9468571%" fx="50.0892308%" fy="49.9468571%"
+                            r="59.2830769%" gradientTransform="matrix(1 0 0 .74286 0 .128)"
+                            id="a_096bbef9-633f-4aba-be89-17665ae80f97">
+                            <stop stop-color="#FBECE3" offset="0%"></stop>
+                            <stop stop-color="#E1CEC1" offset="52.48%"></stop>
+                            <stop stop-color="#C7B0A0" offset="99.3%"></stop>
+                        </radialGradient>
+                        <linearGradient x1="50.1348837%" y1="0.212017167%" x2="50.1348837%" y2="100.057511%"
+                            id="b_096bbef9-633f-4aba-be89-17665ae80f97">
+                            <stop stop-color="#EDAA2B" offset="0%"></stop>
+                            <stop stop-color="#EDA929" offset="3.532755%"></stop>
+                            <stop stop-color="#E9960D" offset="64.74%"></stop>
+                            <stop stop-color="#E78F02" offset="100%"></stop>
+                        </linearGradient>
+                    </defs>
+                    <g transform="translate(4.1 2)" fill-rule="nonzero" stroke="none" stroke-width="1" fill="none">
+                        <path fill="url(#a_096bbef9-633f-4aba-be89-17665ae80f97)"
+                            d="M0.342857143 4.97142857L7.77142857 0 15.2 4.97142857 15.2 14.9714286 7.77142857 20 0.342857143 14.9714286z">
+                        </path>
+                        <path stroke="#72572E" fill="url(#b_096bbef9-633f-4aba-be89-17665ae80f97)"
+                            d="M2.85714286 6.68571429L7.77142857 3.31428571 12.6857143 6.68571429 12.6857143 13.3142857 7.77142857 16.6285714 2.85714286 13.3142857z">
+                        </path>
+                        <path transform="translate(0 14.286)" fill="#9F8D82"
+                            d="M7.77142857 5.71428571L0.342857143 0.685714286 0.342857143 0.171428571 7.77142857 5.2 15.2 0.171428571 15.2 0.685714286z">
+                        </path>
+                        <path opacity="0.5" fill="#F7EBDE"
+                            d="M15.2 5.48571429L7.77142857 0.514285714 0.342857143 5.48571429 0.342857143 4.97142857 7.77142857 0 15.2 4.97142857z">
+                        </path>
+                    </g>
+                </svg>
+                <span id="ChampionRarity" class="rarity-text">Campeón</span>
+            </div>
+            <div class="rarity" (click)="toggleRarity('Epic')">
+                <svg id="EpicRarity" style="opacity: 0.3" height="24" width="24" viewBox="0 0 24 24"
+                    class="card-rarity-selector-itemcomponent__RarityImageStyled-sc-1mh81j-2 hlIpcN">
+                    <defs>
+                        <radialGradient cx="50.0164706%" cy="49.9558282%" fx="50.0164706%" fy="49.9558282%"
+                            r="51.1690184%" gradientTransform="matrix(.95882 0 0 1 .02 0)"
+                            id="a_43caf997-ce16-4250-9108-8766a2b69d63">
+                            <stop stop-color="#FBECE3" offset="0%"></stop>
+                            <stop stop-color="#E5D3C7" offset="33.83%"></stop>
+                            <stop stop-color="#CFBAAB" offset="75.35%"></stop>
+                            <stop stop-color="#C7B0A0" offset="99.3%"></stop>
+                        </radialGradient>
+                        <linearGradient x1="49.8903766%" y1="-0.0620087336%" x2="49.8903766%" y2="99.9244541%"
+                            id="b_43caf997-ce16-4250-9108-8766a2b69d63">
+                            <stop stop-color="#A833E6" offset="0%"></stop>
+                            <stop stop-color="#9318D5" offset="62.35%"></stop>
+                            <stop stop-color="#8B0DCF" offset="99.58%"></stop>
+                        </linearGradient>
+                    </defs>
+                    <g transform="translate(2 2.4)" fill-rule="nonzero" stroke="none" stroke-width="1" fill="none">
+                        <path fill="url(#a_43caf997-ce16-4250-9108-8766a2b69d63)"
+                            d="M19.7142857 11.4285714L9.88571429 18.7428571 0.285714286 11.4285714 3.77142857 0.114285714 15.6571429 0.114285714z">
+                        </path>
+                        <path stroke="#592677" fill="url(#b_43caf997-ce16-4250-9108-8766a2b69d63)"
+                            d="M16.9142857 10.6857143L10 15.8285714 3.25714286 10.6857143 5.71428571 2.74285714 14.0571429 2.74285714z">
+                        </path>
+                        <path opacity="0.5" transform="translate(3.429)" fill="#F7EBDE"
+                            d="M12.4 0.617142857L0.228571429 0.617142857 0.342857143 0.137142857 12.2285714 0.137142857z">
+                        </path>
+                        <path transform="translate(0 10.857)" fill="#9F8D82"
+                            d="M9.82857143 7.88571429L0.285714286 0.571428571 0.4 0.228571429 9.82857143 7.42857143 19.6 0.228571429 19.7142857 0.571428571z">
+                        </path>
+                    </g>
+                </svg>
+                <span id="EpicRarity" class="rarity-text">Épica</span>
+            </div>
+            <div class="rarity" (click)="toggleRarity('Rare')">
+                <svg id="RareRarity" style="opacity: 0.3" height="24" width="24" viewBox="0 0 24 24"
+                    class="card-rarity-selector-itemcomponent__RarityImageStyled-sc-1mh81j-2 hlIpcN">
+                    <defs>
+                        <radialGradient cx="50%" cy="50%" fx="50%" fy="50%" r="56.0003497%"
+                            gradientTransform="matrix(1 0 0 .81714 0 .091)" id="a_3605eda1-cd78-467c-8f0a-cac4d476af0a">
+                            <stop stop-color="#FBECE3" offset="0%"></stop>
+                            <stop stop-color="#E5D3C7" offset="33.83%"></stop>
+                            <stop stop-color="#CFBAAB" offset="75.35%"></stop>
+                            <stop stop-color="#C7B0A0" offset="99.3%"></stop>
+                        </radialGradient>
+                        <linearGradient x1="0%" y1="50%" x2="100.167692%" y2="50%"
+                            id="b_3605eda1-cd78-467c-8f0a-cac4d476af0a">
+                            <stop stop-color="#398CF7" offset="0%"></stop>
+                            <stop stop-color="#2476F2" offset="58.3%"></stop>
+                            <stop stop-color="#1A6BF0" offset="100%"></stop>
+                        </linearGradient>
+                    </defs>
+                    <g transform="translate(3.66 2)" fill-rule="nonzero" stroke="none" stroke-width="1" fill="none">
+                        <path fill="url(#a_3605eda1-cd78-467c-8f0a-cac4d476af0a)"
+                            d="M8.28571429 0L0.114285714 9.88571429 8.17142857 20 16.4571429 9.88571429z"></path>
+                        <path stroke="#365181" fill="url(#b_3605eda1-cd78-467c-8f0a-cac4d476af0a)"
+                            d="M13.8285714 9.82857143L8.17142857 16.6857143 2.68571429 9.94285714 8.34285714 3.14285714z">
+                        </path>
+                        <path opacity="0.5" fill="#F7EBDE"
+                            d="M0.457142857 10.1142857L0.114285714 9.88571429 8.28571429 0 16.4571429 9.88571429 16.0571429 9.88571429 8.28571429 0.628571429z">
+                        </path>
+                        <path transform="translate(0 9.714)" fill="#9F8D82"
+                            d="M8.17142857 10.2857143L0.114285714 0.171428571 0.628571429 0.171428571 8.17142857 9.65714286 16.0571429 0.171428571 16.4571429 0.171428571z">
+                        </path>
+                    </g>
+                </svg>
+                <span id="RareRarity" class="rarity-text">Rara</span>
+            </div>
+            <div class="rarity" (click)="toggleRarity('Common')">
+                <svg id="CommonRarity" style="opacity: 0.3" height="24" width="24" viewBox="0 0 24 24"
+                    class="card-rarity-selector-itemcomponent__RarityImageStyled-sc-1mh81j-2 hlIpcN">
+                    <defs>
+                        <radialGradient cx="50%" cy="50%" fx="50%" fy="50%" r="53.4802676%"
+                            gradientTransform="matrix(.88462 0 0 1 .058 0)" id="a_0fe10983-a6ee-464a-8e9c-823259179799">
+                            <stop stop-color="#FBECE3" offset="0%"></stop>
+                            <stop stop-color="#E5D3C7" offset="33.83%"></stop>
+                            <stop stop-color="#CFBAAB" offset="75.35%"></stop>
+                            <stop stop-color="#C7B0A0" offset="99.3%"></stop>
+                        </radialGradient>
+                        <linearGradient x1="0.116775114%" y1="49.9998821%" x2="100.116642%" y2="49.9998821%"
+                            id="b_0fe10983-a6ee-464a-8e9c-823259179799">
+                            <stop stop-color="#14C87A" offset="0%"></stop>
+                            <stop stop-color="#0EBE63" offset="59.25%"></stop>
+                            <stop stop-color="#0BB958" offset="100%"></stop>
+                        </linearGradient>
+                    </defs>
+                    <g transform="translate(2 3.25)" fill-rule="nonzero" stroke="none" stroke-width="1" fill="none">
+                        <path fill="url(#a_0fe10983-a6ee-464a-8e9c-823259179799)"
+                            d="M0.342857143 0.342857143L19.6571429 0.342857143 10.2857143 17.4285714z"></path>
+                        <path stroke="#295A3F" fill="url(#b_0fe10983-a6ee-464a-8e9c-823259179799)"
+                            d="M10.1714286 13.2L3.71428571 2.11428571 16.2285714 2.11428571z"></path>
+                        <path fill="#F7EBDE"
+                            d="M19.4285714 0.685714286L0.571428571 0.685714286 0.342857143 0.342857143 19.6571429 0.285714286z">
+                        </path>
+                        <path fill="#9F8D82"
+                            d="M10.2857143 17.4285714L0.342857143 0.342857143 1.08571429 0.742857143 10.2857143 16.5714286 18.9714286 0.742857143 19.6571429 0.342857143z">
+                        </path>
+                    </g>
+                </svg>
+                <span id="CommonRarity" class="rarity-text">Común</span>
+            </div>
+        </div>
+    </div>
+</div>

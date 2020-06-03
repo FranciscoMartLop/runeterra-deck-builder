@@ -2,8 +2,8 @@
   margin: 3% 0% 0% 3%;
   display: grid;
   grid-template-areas:
-    "card-title"
-    "cardlist-container";
+    "card-title filter"
+    "cardlist-container cardlist-container";
   grid-gap: 1%;
 }
 
@@ -13,12 +13,34 @@
 }
 
 .cardlist-cardimage {
-    grid-area: cardlist-container;
-    display: grid;
-    grid-template-areas: 'card-image';
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-    max-height: 87vh;
-    overflow: auto;
+  grid-area: cardlist-container;
+  display: grid;
+  grid-template-areas: "card-image";
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  max-height: 87vh;
+  overflow: auto;
+}
+
+.filter {
+  grid-area: filter;
+  justify-self: end;
+  margin-right: 5%;
+}
+
+.filter-button {
+  color: rgb(255, 255, 255);
+  cursor: pointer;
+  height: 36px;
+  width: 36px;
+  background-color: rgb(23, 16, 56);
+  line-height: 0;
+  border-radius: 5px;
+  border-width: 2px;
+  border-color: rgb(204, 173, 112);
+}
+
+.filter-button:focus {
+  outline: none;
 }
 
 .cardimage {
